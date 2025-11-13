@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.notes-page {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 20%;
+  background: #ffffff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 24px;
+}
+
+/* GROUPS */
+.note-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: space-between;
+  background-color: rgba(47, 47, 47, 0.17);
+}
+
+.group-initials {
+  border-radius: 50%;
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  padding: 10px;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  background: #dae5f5;
+}
+
+/* NOTES LIST SCROLL */
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0px 20px;
+  margin-bottom: 20px;
+  height: 80%;
+  gap: 16px;
+}
+
+/* NOTE CARD */
+.note {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* INPUT BAR */
+.note-input {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+}
+
+.send-btn {
+  background: #2c387e;
+  border: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+.send-btn:disabled {
+  background: #ccc;
+}
+
+.add-group-btn {
+  background: #16008b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+}
+
+.note textarea {
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.note button {
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.note button:last-child {
+  background: #ccc;
+}
+
+/* FALLBACK PAGE VISIBILITY */
+.notes-page.group-selected .fallback-page {
+  display: none !important;
+}
+
+.notes-page.no-group-selected .fallback-page {
+  display: flex;
+}
+
+/* Fix fallback layout on mobile */
+.fallback-page {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.fallback-page * {
+  max-width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+    height: 100%;
+  }
+
+  /* Hide sidebar when group selected */
+  .notes-page.group-selected .sidebar {
+    display: none !important;
+  }
+
+  /* Show fallback only when NO group selected */
+  .notes-page.no-group-selected .fallback-page {
+    display: flex !important;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .notes-list {
+    height: calc(100vh - 180px);
+  }
+
+  .note-input {
+    border-radius: 0 !important;
+  }
+}
